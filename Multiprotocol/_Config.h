@@ -82,7 +82,7 @@
 
 //Uncomment (remove //) if you have an internal 5-in-1 Multi module in a Jumper T18 or T-Lite.
 //All components are considered to be installed and specifics to that module are automatically configured 
-//#define MULTI_5IN1_INTERNAL JP_T18
+#define MULTI_5IN1_INTERNAL JP_T18
 //#define MULTI_5IN1_INTERNAL JP_TLite
 
 /** OrangeRX TX **/
@@ -265,8 +265,11 @@
 #define	V911S_CCNRF_INO
 #define	XK_CCNRF_INO
 
+
 //The protocols below need a SX1276 to be installed
 #define	FRSKYR9_SX1276_INO
+// WARNING - Enabling this may overflows the rom
+#define ELRS_SX1276_INO
 
 /***************************/
 /*** PROTOCOLS SETTINGS  ***/

@@ -105,6 +105,7 @@ const char STR_CONFIG[]     ="Config";
 const char STR_LOSI[]       ="Losi";
 const char STR_MOULDKG[]    ="MouldKg";
 const char STR_XERALL[]     ="Xerall";
+const char STR_ELRS[]		="ELRS";
 
 const char STR_SUBTYPE_FLYSKY[] =     "\x04""Std\0""V9x9""V6x6""V912""CX20";
 const char STR_SUBTYPE_HUBSAN[] =     "\x04""H107""H301""H501";
@@ -166,6 +167,8 @@ const char STR_SUBTYPE_MOULKG[] =     "\x06""Analog""Digit\0";
 const char STR_SUBTYPE_KF606[] =      "\x06""KF606\0""MIG320";
 const char STR_SUBTYPE_E129[] =       "\x04""E129""C186";
 const char STR_SUBTYPE_FX[] =         "\x03""816""620";
+const char STR_SUBTYPE_ELRS[] =       "\x08""915AU200""915AU100""915AU50\0""915FC200""915FC100""915FC50\0""868EU200""868EU100""868EU50\0";
+
 #define NO_SUBTYPE		nullptr
 
 #ifdef SEND_CPPM
@@ -302,6 +305,10 @@ const mm_protocol_definition multi_protocols[] = {
 		#else	// DIY & T-Lite
 		{PROTO_FRSKY_R9,   STR_FRSKYR9,   STR_SUBTYPE_FRSKYR9,   8, OPTION_RFPOWER, 1, 0, 0,         FRSKYR9_init,    FRSKYR9_callback    },
 		#endif
+	#endif
+	#if defined(ELRS_SX1276_INO)
+		// Protocol number, Protocol String, Sub_protocol strings, Number of sub_protocols, Option type, Failsafe, ChMap, RF switch, Init, Callback
+		{PROTO_ELRS,       STR_ELRS,      STR_SUBTYPE_ELRS,      9, OPTION_RFCHAN,  1, 0, 0,         ExpressLRS_init,  ExpressLRS_callback },
 	#endif
 	#if defined(FUTABA_CC2500_INO)
 		{PROTO_FUTABA,     STR_FUTABA,    STR_SUBTYPE_FUTABA,    1, OPTION_RFTUNE,  1, 1, SW_CC2500, SFHSS_init,      SFHSS_callback      },
